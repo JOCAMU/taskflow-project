@@ -10,8 +10,45 @@ header{
     margin-bottom: 16px;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    transition: 0.3s ease;
+}
+
+    .task:hover{
+    transform: translateY(-5px);
 }
  body{
     margin: 0;
     background-color: #bed3cb;
 }
+.task-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.prioridad{
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    color:white;
+}
+.p-alta{
+    background-color: #ef4444;
+}
+.p-media{
+    background-color: #f79a49;
+}
+.p-baja{
+    background-color: #15c615;
+}
+.container{
+    display: flex;
+}
+aside{
+    width: 250px;
+    padding: 16px;
+    background-color: #e4e4e4;
+}
+main{
+flex: 1;
+    padding: 16px;}
