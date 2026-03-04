@@ -52,3 +52,12 @@ aside{
 main{
 flex: 1;
     padding: 16px;}
+    @media(max-width: 768px){
+        .container{
+
+            flex-direction: column;
+        }
+        aside {
+            width: 100%;
+        }
+    }

@@ -14,44 +14,32 @@
   <div class="container"> 
     
     <aside>
-         <h2>Categorias</h2>
-         <ul>
-            <li>Trabajo</li>
-            <li>Personal</li>
-            <li>Estudios</li>
-         </ul>
+         <h2>Nueva tarea</h2>
+          <!--nuevo formulario-->
+        <form id="task-form">
+            <input type="text" id="task-input" placeholder="nueva tarea...">
+               <select id="priority-input">
+                 <option value="alta">alta</option> 
+                 <option value="media">media</option>               
+                 <option value="baja">baja</option>
+                </select>
+                <button type="submit">añadir</button>
+        </form>
     </aside>
    
   
    <main>
         <section>
             <h2>Mis tareas</h2>
-        <div class="task">
-            <div class="task-header">
-            <h3>Terminar maqueta html</h3>
-            <span class="prioridad p-alta">alta</span>
-            </div>   
-            <p class="categoria">trabajo</p>
-        </div>
-        <div class="task">
-            <div class="task-header">
-            <h3>Organizar Garaje</h3>
-           <span class="prioridad p-baja">baja</span>
-          </div>  
-            <p class="categoria">Personal </p>
-
-        </div>
-        <div class="task">
-           <div class="task-header">
-            <h3>Terminar Proyecto</h3>
-            <span class="prioridad p-media">media</span>
-          </div>  
-            <p class="categoria">Estudios</P>
-        </div>
+       
+            <div id="task-list">
+              </div>
+           
          </section>
 
     </main>
     
 </div>
+ <script src="app.js"></script>
 </body>
 </html>
