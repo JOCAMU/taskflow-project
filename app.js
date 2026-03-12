@@ -6,6 +6,7 @@ const priority = document.getElementById("priority-input");
 const tasklist = document.getElementById("task-list");
 const searchInput = document.getElementById("search-input");
 
+let tasks= [];
 const savedTasks = localStorage.getItem("tasks");
 
 if (savedTasks) {
@@ -41,22 +42,24 @@ ${taskData.level}
 
 const deletebtn = document.createElement("button");
 
-deletebtn.textContent = "Eliminar";
+deletebtn.textContent = "completada";
 
 deletebtn.className =
 "bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition";
 
 deletebtn.addEventListener("click", function () {
+  const tareaEncontrada = tasks.find(function(t) {
+    return t.text === taskData.text;
+  });
 
-task.remove();
-
-tasks = tasks.filter(function (t) {
-return t.text !== taskData.text;
+  tareaEncontrada.completed = true;
+task.classList.add("opacity-50");           // la tarjeta se vuelve transparente
+task.querySelector("h3").classList.add("line-through");  // el texto se tacha
+deletebtn.disabled = true;                  // desactiva el botón para no pulsarlo otra vez
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 });
 
-localStorage.setItem("tasks", JSON.stringify(tasks));
 
-});
 
 task.appendChild(deletebtn);
 
@@ -80,7 +83,8 @@ if (text === "") return;
 
 const newTask = {
 text: text,
-level: level
+level: level,
+completed:false
 };
 
 tasks.push(newTask);

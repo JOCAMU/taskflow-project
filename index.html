@@ -8,11 +8,16 @@
 <title>Taskflow</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class'
+  }
+</script>
 
 </head>
 
-<body class="bg-gray-100 min-h-screen flex flex-col">
 
+<body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex flex-col">
 <header class="bg-blue-600 text-white p-4 flex justify-between items-center">
 <h1 class="text-2xl font-bold">Taskflow</h1>
 
@@ -22,11 +27,11 @@ Modo oscuro </button>
 
 </header>
 
-<div class="flex gap-6 p-6 max-w-6xl">
 
-<aside class="bg-white dark:bg-gray-800 p-5 rounded-lg shadow w-64 flex flex-col gap-4">
+<div class="flex gap-6 p-6 max-w-6xl w-full dark:bg-gray-900">
 
-<h2 class="text-lg font-semibold text-gray-800 dark:text-white">
+<aside class="bg-gray-700 dark:bg-gray-800 p-5 rounded-lg shadow w-64 flex flex-col gap-4">
+ <h2 class="text-lg font-semibold text-gray-800 dark:text-white">
 Nueva tarea
 </h2>
 
@@ -38,12 +43,14 @@ id="task-input"
 placeholder="Nueva tarea..."
 class="border p-2 rounded w-full"
 />
-
+<label for="priority-input" class="text-white">Prioridad</label>
 <select
 id="priority-input"
 class="border p-2 rounded w-full"
 
 >
+
+
 
 <option value="alta">Alta</option>
 <option value="media">Media</option>
@@ -57,6 +64,11 @@ Añadir </button>
 
 </form>
 
+<h2 class="text-lg font-semibold text-white">Estadisticas</h2>
+<p class="text-white">total: <span id="total-tasks">0</span></p>
+<p class="text-white">Completadas: <span id="completed-tasks">0</span></p>
+<p class="text-white">pendiente: <span id="pending-task">0</span></p>
+
 </aside>
 
 <main class="flex-1 flex flex-col gap-6">
@@ -64,11 +76,12 @@ Añadir </button>
 <section>
 
 <h2 class="text-xl font-semibold mb-3 text-gray-800 dark:text-white">
-Mis tareas
-</h2>
+    Mis tareas
+    </h2>
 
 <div id="task-list" class="flex flex-col gap-3">
 </div>
+
 
 </section>
 
@@ -77,7 +90,7 @@ Mis tareas
 <h2 class="text-xl font-semibold mb-3 text-gray-800 dark:text-white">
 Buscar tareas
 </h2>
-
+<label for="task-input">Nombre de la tarea</label>
 <input
 type="text"
 id="search-input"
@@ -92,6 +105,10 @@ class="border p-2 rounded w-full"
 </div>
 
 <script src="app.js"></script>
+
+<footer class="bg-blue-600 text-white text-center p-3 mt-auto">
+<p>TaskFlow - Gestor de tareas</p>
+</footer>
 
 </body>
 </html>
