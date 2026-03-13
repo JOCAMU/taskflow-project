@@ -50,7 +50,7 @@ function createTaskElement(taskData) {
   const deletebtn = document.createElement("button");
   deletebtn.textContent = "completada";
   deletebtn.className = "bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition";
-
+  /*deletebtn.setAttribute("aria-label", "marcar tarea como completada");*/
   deletebtn.addEventListener("click", function () {
     const tareaEncontrada = tasks.find(function(t) {
       return t.text === taskData.text;
@@ -64,8 +64,51 @@ function createTaskElement(taskData) {
     updateStats();
   });
 
-  task.appendChild(deletebtn);
-  tasklist.appendChild(task);
+ if (taskData.completed === true) {
+  task.classList.add("opacity-50");
+  task.querySelector("h3").classList.add("line-through");
+  deletebtn.disabled = true;
+}
+ const editBtn = document.createElement("button");
+editBtn.textContent = "editar";
+editBtn.className = "bg-blue-500 text-white px-1 py-1 rounded hover:bg-blue-600 transition ml-1";
+/*editBtn.setAttribute("aria-label, editar tarea");*/
+editBtn.addEventListener("click", function() {
+  const h3 = task.querySelector("h3");
+  const currentText = h3.textContent.trim();
+
+  const editInput = document.createElement("input");
+  editInput.value = currentText;
+  editInput.className = "border p-1 rounded w-full";
+
+  h3.replaceWith(editInput);
+  editBtn.textContent = "guardar";
+
+  editBtn.addEventListener("click", function() {
+    const newText = editInput.value.trim();
+    if (newText === "") return;
+
+    const tareaEncontrada = tasks.find(function(t) {
+      return t.text === taskData.text;
+    });
+
+    tareaEncontrada.text = newText;
+    taskData.text = newText;
+
+    const newH3 = document.createElement("h3");
+    newH3.className = "font-semibold text-gray-800 dark:text-white";
+    newH3.textContent = newText;
+
+    editInput.replaceWith(newH3);
+    editBtn.textContent = "editar";
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  });
+});
+
+task.appendChild(deletebtn);
+task.appendChild(editBtn);
+tasklist.appendChild(task);
 }
 
 tasks.forEach(function (task) {
@@ -110,11 +153,21 @@ searchInput.addEventListener("input", function () {
   });
 });
 
+
 const toggle = document.getElementById("toggle-dark");
+
+// Al cargar la página comprueba si había guardada una preferencia
+if (localStorage.getItem("darkMode") === "true") {
+  document.documentElement.classList.add("dark");
+}
+
 toggle.addEventListener("click", () => {
   document.documentElement.classList.toggle("dark");
+  // Guarda la preferencia en localStorage
+  const isDark = document.documentElement.classList.contains("dark");
+  localStorage.setItem("darkMode", isDark);
 });
-  
+
 const clearBtn = document.getElementById("clear-completed");
 clearBtn.addEventListener("click", function() {
   tasks = tasks.filter(function(t) {
@@ -157,7 +210,20 @@ document.getElementById("filter-completed").addEventListener("click", function()
   });
 });
 
+document.getElementById("complete-all").addEventListener("click", function() {
+  tasks.forEach(function(t) {
+    t.completed = true;
+  });
 
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  tasklist.innerHTML = "";
+
+  tasks.forEach(function(task) {
+    createTaskElement(task);
+  });
+
+  updateStats();
+});
 
 
 

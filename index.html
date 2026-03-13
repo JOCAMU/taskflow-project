@@ -42,7 +42,9 @@ type="text"
 id="task-input"
 placeholder="Nueva tarea..."
 class="border p-2 rounded w-full text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
+maxlength="50"
 >
+
 <label for="priority-input" class="text-white">Prioridad</label>
 <select
 id="priority-input"
@@ -79,14 +81,10 @@ Añadir </button>
 <section>
 
 <h2 class="text-xl font-semibold mb-3 text-gray-800 dark:text-white">
-    Mis tareas
-    </h2>
+   mis tareas
+ </h2>
 
-<div class="flex gap-2 mb-3">
-  <button id="filter-all" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition">Todas</button>
-  <button id="filter-pending" class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600 transition">Pendientes</button>
-  <button id="filter-completed" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition">Completadas</button>
-</div>
+
    
 <div id="task-list" class="flex flex-col gap-3">
 </div>
@@ -106,15 +104,23 @@ id="search-input"
 placeholder="Buscar tarea..."
 class="border p-2 rounded w-full text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
 >
-
+<button id="complete-all" class="bg-orange-500 text-white px-3 py-1 rounded hover:bg-orange-600 transition mt-3">Completar todas</button>
 </section>
 
 </main>
 
 </div>
 
-<script src="app.js"></script>
+<!-- script src="app.js"></script-->
 
+<h2 class= "text-xl font-semibold mb-3 text-gray-800 dark:text-white text-center"> filtras tareas</h2>  
+<div class="flex gap-2 mb-3 justify-center">
+  <button id="filter-all" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition">Todas</button>
+  <button id="filter-pending" class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600 transition">Pendientes</button>
+  <button id="filter-completed" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition">Completadas</button>
+  
+</div>
+<script src="app.js"></script>
 <footer class="bg-blue-600 text-white text-center p-3 mt-auto">
 <p>TaskFlow - Gestor de tareas</p>
 </footer>
