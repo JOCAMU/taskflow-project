@@ -50,29 +50,38 @@ function createTaskElement(taskData) {
   const deletebtn = document.createElement("button");
   deletebtn.textContent = "completada";
   deletebtn.className = "bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition";
-  /*deletebtn.setAttribute("aria-label", "marcar tarea como completada");*/
-  deletebtn.addEventListener("click", function () {
-    const tareaEncontrada = tasks.find(function(t) {
-      return t.text === taskData.text;
-    });
-
-    tareaEncontrada.completed = true;
-    task.classList.add("opacity-50");
-    task.querySelector("h3").classList.add("line-through");
-    deletebtn.disabled = true;
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-    updateStats();
-  });
-
+ 
  if (taskData.completed === true) {
   task.classList.add("opacity-50");
   task.querySelector("h3").classList.add("line-through");
-  deletebtn.disabled = true;
+  deletebtn.textContent = "descompletar";
 }
+  deletebtn.setAttribute("aria-label", "marcar tarea como completada");
+ deletebtn.addEventListener("click", function () {
+  const tareaEncontrada = tasks.find(function(t) {
+    return t.id === taskData.id;
+  });
+
+  if (tareaEncontrada.completed === false) {
+    tareaEncontrada.completed = true;
+    task.classList.add("opacity-50");
+    task.querySelector("h3").classList.add("line-through");
+    deletebtn.textContent = "descompletar";
+  } else {
+    tareaEncontrada.completed = false;
+    task.classList.remove("opacity-50");
+    task.querySelector("h3").classList.remove("line-through");
+    deletebtn.textContent = "completada";
+  }
+
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+  updateStats();
+});
+
  const editBtn = document.createElement("button");
 editBtn.textContent = "editar";
 editBtn.className = "bg-blue-500 text-white px-1 py-1 rounded hover:bg-blue-600 transition ml-1";
-/*editBtn.setAttribute("aria-label, editar tarea");*/
+editBtn.setAttribute("aria-label", "editar tarea");
 editBtn.addEventListener("click", function() {
   const h3 = task.querySelector("h3");
   const currentText = h3.textContent.trim();
@@ -89,7 +98,7 @@ editBtn.addEventListener("click", function() {
     if (newText === "") return;
 
     const tareaEncontrada = tasks.find(function(t) {
-      return t.text === taskData.text;
+      return t.id === taskData.id;
     });
 
     tareaEncontrada.text = newText;
@@ -110,7 +119,6 @@ task.appendChild(deletebtn);
 task.appendChild(editBtn);
 tasklist.appendChild(task);
 }
-
 tasks.forEach(function (task) {
   createTaskElement(task);
 });
