@@ -13,25 +13,43 @@
     darkMode: 'class'
   }
 </script>
+<style>
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
 
+.animate-fade {
+  animation: fadeIn 0.4s ease;
+}
+</style>
 </head>
 
 
-<body class="bg-gray-100 dark:bg-gray-900 min-h-screen flex flex-col">
-<header class="bg-blue-600 text-white p-4 flex justify-between items-center">
-<h1 class="text-2xl font-bold">Taskflow</h1>
+<body class="bg-gray-50 dark:bg-gray-900 min-h-screen">
+
+<header class="bg-gray-800 text-white max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto px-6 py-6 rounded-xl shadow-md border-b border-gray-600 relative">
+
+<h1 class="text-4xl font-bold text-center">
+  Gestor de tareas</h1>
 
 <button id="toggle-dark"
-class="bg-white text-blue-600 px-3 py-1 rounded hover:bg-gray-200 transition focus:ring-2 focus:ring-blue-300">
-Modo oscuro </button>
+class="absolute right-6 top-6 bg-gray-500 text-white px-3 py-1 rounded hover:bg-gray-600 transition">
+Modo oscuro
+</button>
 
 </header>
 
+<div class= "flex flex-col md:flex-row gap-8 p-6 max-w-6xl w-full mx-auto">
 
-<div class= "flex flex-col md:flex-row gap-6 p-6 max-w-6xl w-full dark:bg-gray-900">
-
-<aside class="bg-gray-700 dark:bg-gray-800 p-5 rounded-lg shadow w-full md:w-64 flex flex-col gap-4">
- <h2 class="text-lg font-semibold text-gray-800 dark:text-white">
+<aside class="bg-gray-800 dark:bg-gray-800 p-6 rounded-xl shadow-md w-full md:w-72 flex flex-col gap-5">
+ <h2 class="text-lg font-semibold text-white dark:text-white">
 Nueva tarea
 </h2>
 
@@ -61,17 +79,17 @@ class="border p-2 rounded w-full"
 
 <button
 type="submit"
-class="bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition focus:ring-2 focus:ring-blue-300">
+class="bg-blue-800 text-white p-2 rounded hover:bg-blue-900 transition focus:ring-2 focus:ring-blue-300">
 Añadir </button>
 
 </form>
 
 <h2 class="text-lg font-semibold text-white">Estadisticas</h2>
-<p class="text-white">total: <span id="total-tasks">0</span></p>
+<p class="text-white">Total: <span id="total-tasks">0</span></p>
 <p class="text-white">Completadas: <span id="completed-tasks">0</span></p>
-<p class="text-white">pendiente: <span id="pending-task">0</span></p>
+<p class="text-white">Pendientes: <span id="pending-task">0</span></p>
 
-<button id="clear-completed" class="bg-red-500 text-white p-2 rounded hover:bg-red-600 transition focus:ring-2 focus:ring-blue-300">
+<button id="clear-completed" class="bg-blue-800 text-white p-2 rounded hover:bg-blue-900 transition focus:ring-2 focus:ring-blue-300">
   Borrar completadas
 </button>
 </aside>
@@ -81,7 +99,7 @@ Añadir </button>
 <section>
 
 <h2 class="text-xl font-semibold mb-3 text-gray-800 dark:text-white">
-   mis tareas
+  Tareas
  </h2>
 
 
@@ -104,24 +122,26 @@ id="search-input"
 placeholder="Buscar tarea..."
 class="border p-2 rounded w-full text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
 >
-<button id="complete-all" class="bg-orange-500 text-white px-3 py-1 rounded hover:bg-orange-600 transition mt-3">Completar todas</button>
+<button id="complete-all" class="bg-blue-800 text-white px-3 py-1 rounded hover:bg-blue-900 transition mt-3">Completar todas</button>
 </section>
-
+<section>
+<h2 class= "text-xl font-semibold mb-3 text-gray-800 dark:text-white text-center"> Filtras tareas</h2>  
+<div class="flex gap-2 mb-3 justify-center">
+  <button id="filter-all" class="bg-gray-500 text-white px-1 py-1 rounded hover:bg-gray-600 transition">Todas</button>
+  <button id="filter-pending" class="bg-gray-500 text-white px-1 py-1 rounded hover:bg-gray-600 transition">Pendientes</button>
+  <button id="filter-completed" class="bg-gray-500 text-white px-1 py-1 rounded hover:bg-gray-600 transition">Completadas</button>
+  
+</div>
+</section>
 </main>
 
 </div>
 
 <!-- script src="app.js"></script-->
 
-<h2 class= "text-xl font-semibold mb-3 text-gray-800 dark:text-white text-center"> filtras tareas</h2>  
-<div class="flex gap-2 mb-3 justify-center">
-  <button id="filter-all" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition">Todas</button>
-  <button id="filter-pending" class="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600 transition">Pendientes</button>
-  <button id="filter-completed" class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition">Completadas</button>
-  
-</div>
+
 <script src="app.js"></script>
-<footer class="bg-blue-600 text-white text-center p-3 mt-auto">
+<footer class="bg-gray-800 text-white text-center p-3 mt-auto">
 <p>TaskFlow - Gestor de tareas</p>
 </footer>
 

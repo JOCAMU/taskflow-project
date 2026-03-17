@@ -27,7 +27,7 @@ function updateStats() {
 function createTaskElement(taskData) {
 
   const task = document.createElement("div");
-  task.className = "bg-white dark:bg-gray-800 p-4 rounded-lg shadow flex justify-between items-center";
+ task.className = "bg-gray-300 dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 hover:scale-[1.01] transition-all duration-300 flex justify-between items-center";
 
   const priorityColor =
     taskData.level === "alta"
@@ -49,7 +49,7 @@ function createTaskElement(taskData) {
 
   const deletebtn = document.createElement("button");
   deletebtn.textContent = "completada";
-  deletebtn.className = "bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition";
+  deletebtn.className = "bg-gray-600 text-white px-2 py-1 rounded hover:bg-gray-700 transition";
  
  if (taskData.completed === true) {
   task.classList.add("opacity-50");
@@ -66,7 +66,7 @@ function createTaskElement(taskData) {
     tareaEncontrada.completed = true;
     task.classList.add("opacity-50");
     task.querySelector("h3").classList.add("line-through");
-    deletebtn.textContent = "descompletar";
+    deletebtn.textContent = "Descompletar";
   } else {
     tareaEncontrada.completed = false;
     task.classList.remove("opacity-50");
@@ -80,7 +80,7 @@ function createTaskElement(taskData) {
 
  const editBtn = document.createElement("button");
 editBtn.textContent = "editar";
-editBtn.className = "bg-blue-500 text-white px-1 py-1 rounded hover:bg-blue-600 transition ml-1";
+editBtn.className = "bg-gray-500 text-white px-1 py-1 rounded hover:bg-gray-600 transition ml-1";
 editBtn.setAttribute("aria-label", "editar tarea");
 editBtn.addEventListener("click", function() {
   const h3 = task.querySelector("h3");
@@ -118,6 +118,10 @@ editBtn.addEventListener("click", function() {
 task.appendChild(deletebtn);
 task.appendChild(editBtn);
 tasklist.appendChild(task);
+
+setTimeout(() => {
+  task.classList.add("animate-fade");
+}, 10);
 }
 tasks.forEach(function (task) {
   createTaskElement(task);
