@@ -27,7 +27,7 @@ function updateStats() {
 function createTaskElement(taskData) {
 
   const task = document.createElement("div");
- task.className = "bg-gray-300 dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 hover:scale-[1.01] transition-all duration-300 flex justify-between items-center";
+ task.className = "bg-gray-300 dark:bg-gray-800 p-4 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 hover:scale-[1.01] transition-all duration-300 flex justify-between items-stretch";
 
   const priorityColor =
     taskData.level === "alta"
@@ -37,15 +37,22 @@ function createTaskElement(taskData) {
     : "bg-green-500";
 
   task.innerHTML = `
-    <div>
+  <div class="flex items-center gap-3 w-full">
+
+    <div class="w-2 h-full rounded ${priorityColor}"></div>
+
+    <div class="flex flex-col">
       <h3 class="font-semibold text-gray-800 dark:text-white">
         ${taskData.text}
       </h3>
+
       <span class="text-white text-xs px-2 py-1 rounded ${priorityColor}">
         ${taskData.level}
       </span>
     </div>
-  `;
+
+  </div>
+`;
 
   const deletebtn = document.createElement("button");
   deletebtn.textContent = "completada";
@@ -80,7 +87,7 @@ function createTaskElement(taskData) {
 
  const editBtn = document.createElement("button");
 editBtn.textContent = "editar";
-editBtn.className = "bg-gray-500 text-white px-1 py-1 rounded hover:bg-gray-600 transition ml-1";
+editBtn.className = "bg-gray-600 text-white px-1 py-1 rounded hover:bg-gray-700 transition ml-1";
 editBtn.setAttribute("aria-label", "editar tarea");
 editBtn.addEventListener("click", function() {
   const h3 = task.querySelector("h3");
