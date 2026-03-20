@@ -1,16 +1,14 @@
-# Comparativa entre asistentes de IA.
+# Comparativa entre asistentes de IA (ChatGPT vs Claude)
 
-En este documento se comparan dos asistentes de inteligencia artificial
-como son chatgpt y cloude, en diferentes tareas relacionadas con 
-programacion.
+En este documento se comparan dos asistentes de inteligencia artificial: ChatGPT y Claude, en diferentes tareas relacionadas con la programación.
 
-Se valorara:
- - Claridad de las explicaciones.
- - Capacidad de detectar errores en el codigo.
- - La calidad del codigo generado.
+Se valoran:
+- Claridad de las explicaciones.
+- Capacidad de detectar errores en el código.
+- La calidad del código generado.
 
-## Explicaiones de conceptos tecnicos
-## closures:
+## Explicaciones de conceptos técnicos
+### Closures
 **prompt utilizado en ambas herramientas:**
 
  Dame una explicación sencilla de que son los closures en javascript:
@@ -139,10 +137,10 @@ triple(5); // 15
 Una función lleva consigo una "mochila" con las variables de su entorno. Esa mochila es el closure.
 Cada vez que llamas a `crearContador(),` se crea una mochila nueva e independiente, por eso dos contadores no comparten su cuenta.
 
-## conclusion.
-Chatgpt tiene una explicacion mas sencilla de entender, mejor estructurada y mas extensa, mientras que claude tiene expliaciones mas cortas, algo mas tecnicas con mas ejemplos de codigo.
+## Conclusión.
+ChatGPT tiene una explicación más sencilla de entender, mejor estructurada y más extensa, mientras que Claude tiene explicaciones más cortas, algo más técnicas y con más ejemplos de código.
 
-## Evnet loop:
+## Event loop
 **prompt utilizado en ambas herramientas**<br>
 
 Necesito una breve explicacion de que es event loop:
@@ -212,7 +210,7 @@ JavaScript solo puede hacer una cosa a la vez. Pero necesita manejar cosas que t
 
 Ejemplo clásico
 ```
-javascriptconsole.log("1");
+console.log("1");
 
 setTimeout(() => console.log("2"), 0);
 
@@ -225,10 +223,10 @@ En una frase
 
 El event loop vigila el call stack y, cuando está vacío, empuja el siguiente callback de la cola para ejecutarse.
 
-## conclusion
+## Conclusión
 En este caso tenemos algunas diferencias más, chatgpt no nomnbra nada de las web apis mientras que claude las incluye dentro del even loop. Chatgpt sigue teniendo respuestas mas extensas. En realidad las web api no forman parte del event loop, ya que viven dentro del navegador, por tema codigo los dos son similares. 
 
-## DOM:
+## DOM
 
 **prompt utilizados en ambas herramientas**<br>
 Dame explicacion sencilla de que es DOM 
@@ -338,8 +336,8 @@ Son cosas distintas:
 Cuando haces document.querySelector y cambias algo, el HTML del archivo no cambia, solo cambia el árbol en memoria que el navegador está mostrando.
 
 **Resumen:** El DOM es la versión "viva" de tu HTML que el navegador crea en memoria para que JavaScript pueda interactuar con ella.
-## conclusión
- La respuesta de chatgpt vuelve a ser mas extensa y mejor organizada, si es verdad que en este caso los ejemplos de codigo de javascrip son mejores los de claude, 
+## Conclusión
+La respuesta de ChatGPT vuelve a ser más extensa y mejor organizada. En este caso, los ejemplos de código de JavaScript se ven mejores en Claude.
 
- ## Aclaracion importante
- La version de chatgpt probada para este trabajo es una version de pago, que tiene un coste menseual de unos 8 euros, mientras que la version de claude es una verion gratuita. 
+## Aclaración importante
+La versión de ChatGPT probada para este trabajo es una versión de pago, con un coste mensual de unos 8 euros, mientras que la versión de Claude es gratuita.

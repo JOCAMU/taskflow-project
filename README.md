@@ -53,22 +53,49 @@ Aplicación web para gestionar tareas personales con soporte para modo oscuro, f
 
 ### Prueba 1 - App con lista vacía
 - Resultado: 
-La aplicacion carga perfectamente sin ninguna tarea en la lista
+La aplicación carga perfectamente sin ninguna tarea en la lista
 ### Prueba 2 - Añadir tarea sin título
 - Resultado: 
-La aplicacion no permite añadir tareas sin titulo
+La aplicación no permite añadir tareas sin título
 ### Prueba 3 - Tarea con título muy largo
 - Resultado: 
 Se ha establecido un limite maximo de 50 caracteres
 ### Prueba 4 - Marcar varias tareas como completadas
 - Resultado: 
- La aplicacion permite marcar varias tareas como completadas 
+La aplicación permite marcar varias tareas como completadas
 ### Prueba 5 - Eliminar varias tareas completadas
 - Resultado: 
- La aplicacion borra satisfactoriamente las tareas completadas 
+La aplicación borra satisfactoriamente las tareas completadas
 ### Prueba 6 - Recargar la página y comprobar persistencia
 - Resultado: 
-La persistencia en la aplicacion cuando recargas la pagina funciona
+La persistencia en la aplicación cuando recargas la página funciona
 ## URL de la aplicación
 
 [TaskFlow en producción]()
+
+---
+
+# Documentación asistida por IA
+
+## Proceso solicitado con ayuda de IA
+
+En esta sección se documenta el proceso de asistencia con IA usado para mejorar el proyecto, siguiendo el enunciado del ejercicio:
+
+1. **Pedir a la IA que genere una primera versión mejorada del README**
+   - Se solicitó una primera propuesta del README con estructura clara (descripción, tecnologías, funcionalidades y cómo usar la aplicación).
+   - La versión inicial se tomó como base y luego se adaptó al contenido real del proyecto.
+
+2. **Pedir ayuda para documentar funciones del proyecto**
+   - Se pidió a la IA que propusiera comentarios para funciones clave del código, especialmente: `renderTasks`, `getVisibleTasks` y `createTaskElement`.
+   - Los comentarios generados describen parámetros y finalidad de cada función.
+
+3. **Revisar y corregir manualmente la documentación generada**
+   - Se revisó que los comentarios coincidieran con el comportamiento real del código.
+   - Se corrigieron partes demasiado genéricas y se adaptó el texto para que fuera más específico y claro.
+
+4. **Añadir ejemplos de uso del proyecto en el README**
+   - Se incluyeron ejemplos/pasos de uso (añadir tareas, marcar completadas, usar filtros y buscar tareas) para facilitar la comprensión.
+
+## Resultado
+
+El uso de IA permitió acelerar la creación de una base de documentación. Sin embargo, la revisión manual fue esencial para asegurar precisión, claridad y coherencia con el proyecto real.
