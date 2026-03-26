@@ -23,7 +23,25 @@ function eliminarTarea(req, res, next) {
     taskService.eliminarTarea(id);
     res.status(204).send();
   } catch (error) {
-    next(error)}
+    next(error);
+  }
 }
 
-module.exports = { obtenerTareas, crearTarea, eliminarTarea };
+function actualizarTarea(req, res, next) {
+  const id = Number(req.params.id);
+  const { completed } = req.body;
+
+  try {
+    const tareaActualizada = taskService.actualizarTarea(id, { completed });
+    res.json(tareaActualizada);
+  } catch (error) {
+    next(error);
+  }
+}
+
+module.exports = {
+  obtenerTareas,
+  crearTarea,
+  eliminarTarea,
+  actualizarTarea // 🔥 clave
+};

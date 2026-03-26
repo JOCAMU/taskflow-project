@@ -23,4 +23,24 @@ function eliminarTarea(id) {
   tasks = tasks.filter(t => t.id !== id);
 }
 
-module.exports = { obtenerTodas, crearTarea, eliminarTarea };
+// 🔥 FUNCIÓN PATCH BIEN HECHA
+function actualizarTarea(id, data) {
+  const tarea = tasks.find(t => t.id === id);
+
+  if (!tarea) {
+    throw new Error('NOT_FOUND');
+  }
+
+  if (typeof data.completed === 'boolean') {
+    tarea.completed = data.completed;
+  }
+
+  return tarea;
+}
+
+module.exports = {
+  obtenerTodas,
+  crearTarea,
+  eliminarTarea,
+  actualizarTarea // 👈 clave
+};

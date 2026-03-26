@@ -6,9 +6,10 @@ const taskRoutes = require('./routes/task.routes');
 const app = express();
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json()); // 👈 importante
 
 app.use('/api/v1/tasks', taskRoutes);
+
 app.use((err, req, res, next) => {
   console.error(err);
 
@@ -18,17 +19,7 @@ app.use((err, req, res, next) => {
 
   return res.status(500).json({ error: 'Error interno del servidor' });
 });
-app.use((err, req, res, next) => {
-  console.error("ERROR REAL:", err.message);
-
-  return res.status(500).json({ error: err.message });
-});
 
 app.listen(PORT, () => {
   console.log(`Servidor en http://localhost:${PORT}`);
 });
-
-app.get('/test', (req, res) => {
-  res.send('FUNCIONA BACKEND');
-});
-console.log("este es mi backend acrual")
